@@ -7,7 +7,6 @@ const app = express()
 app.use(cors());
 app.options('*', cors());
 
-const PORT = 4000 //port 4000 used for local testing
 
 //implemented a comparison function to sort the JSON data.
 const presidentsAscending = () => {
@@ -60,9 +59,7 @@ const presidentsChronological = () => {
   return returnArray
 }
 
-app.listen(PORT, () => {
-  console.log(`server running on port: ${PORT}`)
-})
+app.listen(process.env.PORT || 4000)
 
 //standard route for all presidents, in the order they are in the database.
 app.get("/api/presidents", (req, res) => {
